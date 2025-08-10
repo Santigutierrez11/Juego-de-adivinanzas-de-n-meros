@@ -27,14 +27,18 @@ public class main {
         System.out.println("\t3. Dificil (3 oportunudades)");
         
         do {
-            System.out.print("Elige una opción: ");
-            byte opcion = Byte.parseByte(in.nextLine());
+            try {
+                System.out.print("Elige una opción: ");
+                byte opcion = Byte.parseByte(in.nextLine());
 
-            switch (opcion) {
-                case 1 : return 10;
-                case 2 : return 5;
-                case 3 : return 3;
-                default: System.out.println("Opción no validad\n");
+                switch (opcion) {
+                    case 1 : return 10;
+                    case 2 : return 5;
+                    case 3 : return 3;
+                    default: System.out.println("Opción no validad\n");
+                }
+            } catch (Exception e){
+                System.out.println("Error: " + e.getMessage());
             }
         } while(true);
 
