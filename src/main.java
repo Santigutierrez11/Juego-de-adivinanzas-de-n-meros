@@ -1,8 +1,11 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class main {
-    public static void main(String args[]){
+    public static void main(String[] args){
+        Random random = new Random();
         Scanner in = new Scanner(System.in);
+        int numAleatorio = random.nextInt(0, 101);
         byte intentos;
 
         System.out.println("\t\t¡Bienvenidos al juego de adivinar números!");
@@ -12,10 +15,28 @@ public class main {
         System.out.println("\t+--------------------------------------------------------+");
         
         intentos = nivelDificultad();
+        byte totalIntentos = intentos;
         do {
-            System.out.println(intentos);
             intentos -= 1;
-        } while(intentos >= 0);
+            try {
+                System.out.print("\nIngresa tu respuesta: ");
+                int respuesta = Integer.parseInt(in.nextLine());
+                
+                if (numAleatorio > respuesta){
+                    System.out.println("\nEl número es mayor que " + respuesta);
+                    System.out.println("Le quedan: " + intentos);
+                } else if(numAleatorio < respuesta){
+                    System.out.println("\nEl número es menor que " + respuesta);
+                    System.out.println("Le quedan: " + intentos + " intentos");
+                } else {
+                    System.out.println("Felicidades, acertaste el número en " + (totalIntentos - intentos) + " intentos");
+                    break;
+                }
+
+            } catch(Exception e){
+                System.out.println("Error: " + e.getMessage());
+            }
+        } while(intentos >= 1);
     }
 
     public static byte nivelDificultad(){
