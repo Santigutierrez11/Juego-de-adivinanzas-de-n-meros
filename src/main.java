@@ -8,10 +8,13 @@ public class main {
         int numAleatorio;
         byte intentos;
         byte jugarOtraVez = 1;
+        long lapsoInicio;
+        long lapsoFin;
         
         while(jugarOtraVez == 1) {
             numAleatorio = random.nextInt(0, 101);
             intentos = 0;
+            lapsoInicio = System.currentTimeMillis();
 
             System.out.println("\t\t¡Bienvenidos al juego de adivinar números!");
             System.out.println("\t+--------------------------------------------------------+");
@@ -34,7 +37,8 @@ public class main {
                         System.out.println("\nEl número es menor que " + respuesta);
                         System.out.println("Le quedan: " + intentos + " intentos");
                     } else {
-                        System.out.println("Felicidades, acertaste el número en " + (totalIntentos - intentos) + " intentos");
+                        lapsoFin = System.currentTimeMillis();
+                        System.out.println("Felicidades, acertaste el número en " + (totalIntentos - intentos) + " intentos y en " + (lapsoFin - lapsoInicio) / 1000 + " segundos");
                         break;
                     }
 
